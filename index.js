@@ -14,7 +14,7 @@ client.on("message", message => {
         message.channel.send(`<@!${message.author.id}>, you can't ping everyone!`);
     }
 
-    if(message.content.incudes("can you test play") && message.content.includes("://")) {
+    if((message.content.includes("can you test play") || message.content.includes(".zip")) && message.content.includes("://")) {
         message.delete();
         message.channel.send(`<@!${message.author.id}>, your message was flagged as spam and deleted.`);
     }
