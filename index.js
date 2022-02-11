@@ -1,6 +1,6 @@
 const Discord = require('discord.js');
 const client = new Discord.Client();
-//const config = require('config.json');
+const config = require('config.json');
 
 client.once("ready", () => {
     console.log("Online and Ready");
@@ -14,8 +14,10 @@ client.on("message", message => {
         message.channel.send(`<@!${message.author.id}>, you can't ping everyone!`);
     }
 
-    if((message.content.includes("can you test play") || message.content.includes(".zip")) && message.content.includes("://")) {
+    if((message.content.includes("can you test play") || message.content.includes(".zip")) && message.content.includes("://")) { //test play scams
         message.delete();
         message.channel.send(`<@!${message.author.id}>, your message was flagged as spam and deleted.`);
     }
+
+    //if(message.content.i)
 })

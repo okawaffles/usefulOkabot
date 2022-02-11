@@ -1,0 +1,23 @@
+{
+  "name": "usefulokabot",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/okawaffles/usefulOkabot.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/okawaffles/usefulOkabot/issues"
+  },
+  "homepage": "https://github.com/okawaffles/usefulOkabot#readme",
+  "dependencies": {
+    "discord.js": "^13.6.0"
+  }
+}
