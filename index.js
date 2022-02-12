@@ -36,13 +36,15 @@ client.on("message", message => {
 
     if(msg.includes("nitro") && msg.includes("free") && (msg.includes("://") || msg.includes(".com") || msg.includes(".net")) && message.author != 941422459201138718) {
         message.delete();
+        sendReport("spam", message);
         message.channel.send(`<@!${message.author.id}>, your message was flagged as spam and deleted.`).then(message => {
             message.delete({timeout:5000});
         });
     }
 
-    if(msg.includes("@everyone") && !message.author.hasPermission("MENTION_EVERYONE") && message.author != 941422459201138718) {
+    if(msg.includes("@everyone") && !message.member.hasPermission("MENTION_EVERYONE") && message.author != 941422459201138718) {
         message.delete();
+        sendReport("everyone", message);
         message.channel.send(`<@!${message.author.id}>, you can't ping everyone!`);
     }
 })
