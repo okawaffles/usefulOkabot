@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/okawaffles/usefulOkabot#readme",
   "dependencies": {
+    "@types/node": "^17.0.17",
     "discord.js": "^12.5.3"
   }
 }
