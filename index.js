@@ -2,8 +2,12 @@ const Discord = require('discord.js');
 const client = new Discord.Client();
 const fs = require("fs");
 const config = require('./config.json');
+const { DefinitionManager } = require('./externalDefinitions.js');
+
 let prevMsg = null;
 let errors = 0;
+
+let EDMgr = new DefinitionManager("testWord\ntestWord2");
 
 client.once("ready", () => {
     console.log("Online and Ready");
@@ -57,7 +61,15 @@ client.on("message", message => {
         }
     }
 
-    if ((msg.includes("can you test play") || msg.includes(".zip")) && msg.includes("://") && message.author != 941422459201138718) { //test play scams
+    if(EDMgr.filterMessage(message)) {
+        message.delete();
+        sendReport("spam", message);
+        message.channel.send(`<@!${message.author.id}>, your message was flagged as spam and deleted.`).then(message => {
+            message.delete({ timeout: 5000 });
+        });
+    }
+
+    /*  if ((msg.includes("can you test play") || msg.includes(".zip")) && msg.includes("://") && message.author != 941422459201138718) { //test play scams
         message.delete();
         sendReport("spam", message);
         message.channel.send(`<@!${message.author.id}>, your message was flagged as spam and deleted.`).then(message => {
@@ -71,7 +83,7 @@ client.on("message", message => {
         message.channel.send(`<@!${message.author.id}>, your message was flagged as spam and deleted.`).then(message => {
             message.delete({ timeout: 5000 });
         });
-    }
+    }  */
 
     if (msg.includes("@everyone") && !message.member.hasPermission("MENTION_EVERYONE") && message.author != 941422459201138718) {
         message.delete();
